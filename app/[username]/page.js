@@ -1,8 +1,8 @@
 import React from "react";
 import PaymentForm from "../Components/Payment";
 
-const Username = ({ params }) => {
-  const username = params?.username || "User Name";
+const Username = async ({ params }) => {
+  const {username} = await params;
   return (
     <>
       <div className="flex flex-col relative  justify-center items-center">

@@ -18,12 +18,6 @@ export default function Home() {
             >
               Start here
             </button>
-            <button
-              type="button"
-              className="mt-3 py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700"
-            >
-              Read More
-            </button>
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ const Navbar = () => {
                       <DropdownMenuLabel>My Account</DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem><Link href="/dashboard">Dashboard</Link></DropdownMenuItem>
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem><Link href={`/${session.user.name}`}>Profile</Link></DropdownMenuItem>
                       <DropdownMenuItem>Services</DropdownMenuItem>
                       <DropdownMenuItem
                         onClick={() => {
