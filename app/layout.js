@@ -19,7 +19,7 @@ export const metadata = {
   title: "Get me a Biriyani",
   description: "This is a prototype website to receive payments",
   keywords: "biriyani, payments, food delivery, prototype",
-  author: "Your Name",
+  author: "Wizard",
 };
 
 export default function RootLayout({ children }) {
@@ -28,7 +28,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-black`}
       >
-        {/* Background Animation */}
         <div className="absolute inset-0 -z-10">
           <Squares
             speed={0.35}
