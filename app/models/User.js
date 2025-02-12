@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 
-
-const {Schema, model} = mongoose;
+const { Schema, model } = mongoose;
 
 const UserSchema = new Schema({
-    email: {type: String, required: true},
-    name: {type: String},
-    username: {type: String, required: true},
-    profilepic: {type: String},
-    coverpic: {type: String},
-    createdAt : {type: Date, default: Date.now },
-    updatedAt : {type: Date, default: Date.now },
-})
+  email: { type: String, required: true, unique: true }, // Ensuring email uniqueness
+  name: { type: String },
+  username: { type: String, required: true, unique: true }, // Prevent duplicate usernames
+  profilepic: { type: String },
+  coverpic: { type: String },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+});
 
+const User = model.User || model("User", UserSchema);
 
-export default mongoose.model.User || model("User", UserSchema);
+export default User;

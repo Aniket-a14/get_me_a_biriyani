@@ -1,36 +1,53 @@
-import mongoose from 'mongoose'
-import NextAuth from 'next-auth'
-import GitHubProvider from 'next-auth/providers/github'
-import User from '@/app/models/User'
-import Info from '@/app/models/Info'
+import mongoose from "mongoose";
+import NextAuth from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
+import User from "@/app/models/User";
+
+const MONGODB_URI = "mongodb://127.0.0.1:27017/authDB";
+
+let isConnected = false;
+
+async function connectToDB() {
+  if (isConnected) return;
+  try {
+    await mongoose.connect(MONGODB_URI, {});
+    isConnected = true;
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("MongoDB connection error", error);
+  }
+}
 
 export const authoptions = NextAuth({
   providers: [
     GitHubProvider({
-        clientId: process.env.GITHUB_ID,
-        clientSecret: process.env.GITHUB_SECRET
-      })
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      if (account.provider == "github") {
-        const client = await mongoose.connect("mongodb://localhost:27017/Biriyani")
-        const currentuser = await User.findOne({email: email})
-        if(!currentuser){
-          const newUser = new User({
-            email: email,
-            username: email.split("@")[0],
-          });
+    async signIn({ user, account, profile }) {
+      await connectToDB(); 
 
-          await newUser.save();
-          user.name = newUser.username;
-        }else{
-          user.name = currentuser.username;
-        }
-      } 
+      let email = user?.email || profile?.email; 
+      if (!email) {
+        email = `github_${profile.id}@example.com`;
+      }
+
+      let currentUser = await User.findOne({ email });
+
+      if (!currentUser) {
+        currentUser = new User({
+          email,
+          username: profile?.login || `user_${Date.now()}`, 
+        });
+        await currentUser.save();
+      }
+
+      user.name = currentUser.username;
       return true;
-    }
-  }
-})
+    },
+  },
+});
 
-export {authoptions as GET, authoptions as POST}
+export { authoptions as GET, authoptions as POST };

@@ -8,9 +8,9 @@ const InfoSchema = new Schema({
     message: {type: String},
     amount: {type: Number, required: true},
     createdAt: {type: Date, default: Date.now},
-    UpdatedAt: {type: Date, default: Date.now},
+    updatedAt: {type: Date, default: Date.now},
     done: {type: Boolean, default: false}
 });
 
-
-export default mongoose.models.Info || model("Info", InfoSchema);
+const Info = model.Info || model("Info", InfoSchema);
+export default Info;
