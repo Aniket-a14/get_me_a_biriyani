@@ -18,33 +18,33 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Get me a Biriyani",
   description: "This is a prototype website to receive payments",
+  keywords: "biriyani, payments, food delivery, prototype",
+  author: "Your Name",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-black`}
       >
-        <SessionWrapper>
-          <div className="fixed top-0 left-0 w-full h-full -z-10 bg-black">
-            <Squares
-              speed={0.35}
-              squareSize={50}
-              direction="down"
-              borderColor="rgb(34,34,34)"
-              hoverFillColor="#222"
-            />
-          </div>
+        {/* Background Animation */}
+        <div className="absolute inset-0 -z-10">
+          <Squares
+            speed={0.35}
+            squareSize={50}
+            direction="down"
+            borderColor="rgb(34,34,34)"
+            hoverFillColor="#222"
+            aria-hidden="true"
+          />
+        </div>
 
-          <main className="relative">
-            <div className="max-h-[15vh]">
-              <Navbar />
-            </div>
-            <div className="min-h-[75vh] text-white">{children}</div>
-            <div className="min-h-[10vh] bottom-0">
-              <Footer />
-            </div>
+        <SessionWrapper>
+          <main className="relative min-h-screen flex flex-col text-white">
+            <Navbar className="min-h-[15vh]" />
+            <div className="flex-grow">{children}</div>
+            <Footer className="min-h-[10vh]" />
           </main>
         </SessionWrapper>
       </body>
