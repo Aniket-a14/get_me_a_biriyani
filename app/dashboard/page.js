@@ -3,6 +3,16 @@ import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+export const metadata = {
+  title: 'Dashboard | Get me a Biriyani',
+  description: 'Manage your account, view transactions and update settings',
+  openGraph: {
+    title: 'Dashboard | Get me a Biriyani',
+    description: 'Manage your account, view transactions and update settings',
+    type: 'website',
+  },
+};
+
 const Dashboard = () => {
   const { data: session } = useSession();
   const router = useRouter();

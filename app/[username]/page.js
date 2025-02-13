@@ -1,5 +1,20 @@
 import React from "react";
 import PaymentForm from "../Components/Payment";
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }) {
+  const { username } = params;
+  
+  return {
+    title: `${username}'s Profile | Get me a Biriyani`,
+    description: `Support ${username} and help them achieve their goals`,
+    openGraph: {
+      title: `${username}'s Profile | Get me a Biriyani`,
+      description: `Support ${username} and help them achieve their goals`,
+      type: 'profile',
+    },
+  };
+}
 
 const Username = async ({ params }) => {
   const {username} = await params;
@@ -23,7 +38,7 @@ const Username = async ({ params }) => {
         <div className="text-center flex flex-col relative bottom-5 gap-3">
           <h4 className="text-base font-semibold text-white">@{username}</h4>
           <p className="text-sm text-white">
-            Software Developer | Tech Enthusiast
+            Digital creator sharing content and connecting with supporters
           </p>
         </div>
         <div>

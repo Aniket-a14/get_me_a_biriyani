@@ -1,6 +1,24 @@
 import { Textarea } from "@/app/Components/ui/textarea";
 import { AccordionDemo } from "./Components/Questions";
 
+export const metadata = {
+  title: 'Get me a Biriyani - Support Your Favorite Creators',
+  description: 'A Simple Monetary Platform to receive funds from your followers',
+  keywords: ['donations', 'creators', 'support', 'payments', 'biriyani'],
+  openGraph: {
+    title: 'Get me a Biriyani - Support Your Favorite Creators',
+    description: 'A Simple Monetary Platform to receive funds from your followers',
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://getmeabiriyani.com',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Get me a Biriyani - Support Your Favorite Creators',
+    description: 'A Simple Monetary Platform to receive funds from your followers',
+  },
+};
+
 export default function Home() {
   return (
     <>
