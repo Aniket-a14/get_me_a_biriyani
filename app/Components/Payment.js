@@ -6,12 +6,11 @@ const PaymentForm = () => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isAnonymous && !name.trim()) {
-      setError("Name is required unless anonymous.");
+    if (!name.trim()) {
+      setError("Name is required.");
       return;
     }
     if (!amount || amount < 10) {
@@ -56,33 +55,13 @@ const PaymentForm = () => {
 
         <div>
           <label className="block text-sm font-medium">Your Name</label>
-          <div className="space-y-2">
-            <input 
-              type="text"
-              className="w-full p-3 bg-transparent text-white rounded-md border border-white focus:outline-none disabled:opacity-50"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              disabled={isAnonymous}
-            />
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="anonymous"
-                checked={isAnonymous}
-                onChange={(e) => {
-                  setIsAnonymous(e.target.checked);
-                  if (e.target.checked) {
-                    setName("");
-                  }
-                }}
-                className="w-4 h-4"
-              />
-              <label htmlFor="anonymous" className="text-sm text-gray-300">
-                Stay Anonymous
-              </label>
-            </div>
-          </div>
+          <input 
+            type="text"
+            className="w-full p-3 bg-transparent text-white rounded-md border border-white focus:outline-none"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+          />
         </div>
 
         <div>

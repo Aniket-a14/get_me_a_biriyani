@@ -1,9 +1,8 @@
 import React from "react";
 import PaymentForm from "../Components/Payment";
-import { Metadata } from 'next';
 
 export async function generateMetadata({ params }) {
-  const { username } = params;
+  const { username } = await params;
   
   return {
     title: `${username}'s Profile | Get me a Biriyani`,
@@ -19,7 +18,6 @@ export async function generateMetadata({ params }) {
 const Username = async ({ params }) => {
   const {username} = await params;
   return (
-    <>
       <div className="flex flex-col relative  justify-center items-center">
         <img
           className=" h-[40vh] w-4/5 rounded-lg "
@@ -159,7 +157,6 @@ const Username = async ({ params }) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 
