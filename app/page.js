@@ -1,5 +1,6 @@
 import { Textarea } from "@/app/Components/ui/textarea";
 import { AccordionDemo } from "./Components/Questions";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Get me a Biriyani - Support Your Favorite Creators',
@@ -10,7 +11,6 @@ export const metadata = {
     description: 'A Simple Monetary Platform to receive funds from your followers',
     type: 'website',
     locale: 'en_IN',
-    url: 'https://getmeabiriyani.com',
   },
   twitter: {
     card: 'summary_large_image',
@@ -30,12 +30,14 @@ export default function Home() {
             Click to <a href="#" className="underline">know more</a>
           </p>
           <div className="flex mt-2 gap-3">
+            <Link href="/login">
             <button
               type="button"
               className="mt-3 py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700"
             >
               Start here
             </button>
+            </Link>
           </div>
         </div>
       </div>
