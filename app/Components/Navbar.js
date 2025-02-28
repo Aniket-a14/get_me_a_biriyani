@@ -54,7 +54,9 @@ const Navbar = () => {
                           signOut();
                         }}
                       >
+                      <Link href="/login">
                         Logout
+                        </Link>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

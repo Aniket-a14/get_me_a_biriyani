@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import User from "@/app/models/User";
 
-const MONGODB_URI = "mongodb://127.0.0.1:27017/authDB";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let isConnected = false;
 
